@@ -10,28 +10,7 @@ namespace Acme.Biz
     {
         private List<Vendor> vendors;
 
-        /// <summary>
-        /// Retrieve one vendor.
-        /// </summary>
-        /// <param name="vendorId">Id of the vendor to retrieve.</param>
-        public Vendor Retrieve(int vendorId)
-        {
-            // Create the instance of the Vendor class
-            Vendor vendor = new Vendor();
-
-            // Code that retrieves the defined customer
-
-            // Temporary hard coded values to return 
-            if (vendorId == 1)
-            {
-                vendor.VendorId = 1;
-                vendor.CompanyName = "ABC Corp";
-                vendor.Email = "abc@abc.com";
-            }
-            return vendor;
-        }
-
-        public List<Vendor> Retrieve()
+        public ICollection<Vendor> Retrieve()
         {
             if (vendors == null)
             {
@@ -45,14 +24,23 @@ namespace Acme.Biz
             return vendors;
         }
 
-        public T RetriveValue<T>(string sql, T defaultValue)
+        public ICollection<Vendor> RetrieveAll()
         {
-            //Call to the database to retrive the value
-            //If no value is returned, return the default value
+            var vendors = new List<Vendor>()
+            {
+                {new Vendor() {VendorId = 1, CompanyName = "123", Email = "test@email.dk" }},
+                {new Vendor() {VendorId = 2, CompanyName = "456", Email = "test@email.dk" }},
+                {new Vendor() {VendorId = 3, CompanyName = "789", Email = "test@email.dk" }},
+                {new Vendor() {VendorId = 4, CompanyName = "253", Email = "test@email.dk" }},
+                {new Vendor() {VendorId = 5, CompanyName = "412", Email = "test@email.dk" }},
+                {new Vendor() {VendorId = 6, CompanyName = "789", Email = "test@email.dk" }},
+                {new Vendor() {VendorId = 7, CompanyName = "257", Email = "test@email.dk" }},
+                {new Vendor() {VendorId = 8, CompanyName = "358", Email = "test@email.dk" }},
+                {new Vendor() {VendorId = 9, CompanyName = "897", Email = "test@email.dk" }},
+                {new Vendor() {VendorId = 10, CompanyName = "325", Email = "test@email.dk" }}
+            };
 
-            T value = defaultValue;
-
-            return value;
+            return vendors;
         }
 
         /// <summary>
